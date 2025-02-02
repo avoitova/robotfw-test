@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [ '**' ]
+
+jobs:
+  Build-on-Ubuntu:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install Tools
+        run: |
+          python -m venv ./.venv
+          source .venv/bin/activate
+          pip install robotframework robotframework-lsp
+          export PYTHONPATH=$(pwd)
+      - name: Run Hello Tests
+        run: |
+          source .venv/bin/activate
+          export PYTHONPATH=$(pwd)
+          robot hello.robot
+      - name: Run Math Operations Tests
+        run: |
+          source .venv/bin/activate
+          export PYTHONPATH=$(pwd)
+          robot math_operations.robot

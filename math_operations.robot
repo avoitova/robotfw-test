@@ -26,3 +26,9 @@ Sum Two Zero Numbers
     Log  num1: ${num1}, num2: ${num2}
     ${result}=  Sum  ${num1}  ${num2}
     Should Be Equal As Numbers  ${result}  0
+
+Sum Two Decimal Numbers
+    ${num1}=    Convert To Number    3.2
+    ${num2}=    Convert To Number    6.9
+    ${result}=  Sum    ${num1}    ${num2}
+    Should Be Equal As Numbers    ${result}    10.1
